@@ -17,7 +17,7 @@ namespace Parcial1_apd1_20180906
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new rCiudades());
         }
     }
 }
