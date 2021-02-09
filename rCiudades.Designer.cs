@@ -66,6 +66,7 @@ namespace Parcial1_apd1_20180906
             this.NuevoButton.TabIndex = 3;
             this.NuevoButton.Text = "Nuevo";
             this.NuevoButton.UseVisualStyleBackColor = true;
+            this.NuevoButton.Click += new System.EventHandler(this.NuevoButton_Click);
             // 
             // GuardarButton
             // 
@@ -75,6 +76,7 @@ namespace Parcial1_apd1_20180906
             this.GuardarButton.TabIndex = 4;
             this.GuardarButton.Text = "Guardar";
             this.GuardarButton.UseVisualStyleBackColor = true;
+            this.GuardarButton.Click += new System.EventHandler(this.GuardarButton_Click);
             // 
             // EliminarButton
             // 
@@ -84,6 +86,7 @@ namespace Parcial1_apd1_20180906
             this.EliminarButton.TabIndex = 5;
             this.EliminarButton.Text = "Eliminar";
             this.EliminarButton.UseVisualStyleBackColor = true;
+            this.EliminarButton.Click += new System.EventHandler(this.EliminarButton_Click);
             // 
             // BuscarButton
             // 
@@ -93,6 +96,7 @@ namespace Parcial1_apd1_20180906
             this.BuscarButton.TabIndex = 6;
             this.BuscarButton.Text = "Buscar";
             this.BuscarButton.UseVisualStyleBackColor = true;
+            this.BuscarButton.Click += new System.EventHandler(this.BuscarButton_Click);
             // 
             // NombreTextBox
             // 
