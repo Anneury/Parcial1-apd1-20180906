@@ -64,7 +64,26 @@ namespace Parcial1_apd1_20180906.BLL
             }
             return paso;
         }
+        public static bool ExisteCiudad(string NombreCiudad)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
 
+            try
+            {
+                paso = contexto.Ciudad.Any(e => e.Nombre == NombreCiudad);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return paso;
+        }
         public static Ciudad Buscar(int id)
         {
             Contexto contexto = new Contexto();

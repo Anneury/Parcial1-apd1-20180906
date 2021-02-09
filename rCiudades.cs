@@ -20,10 +20,30 @@ namespace Parcial1_apd1_20180906
             InitializeComponent();
         }
 
+        public bool Validar()
+        {
+            bool paso = true;
+
+            if(NombreTextBox.Text == string.Empty)
+            {
+                ErrorProvider.SetError(NombreTextBox, "No puedes dejar este campo vacio!");
+                NombreTextBox.Focus();
+                paso = false;
+            }
+            if (CiudadBLL.ExisteCiudad(NombreTextBox.Text))
+            {
+                ErrorProvider.SetError(NombreTextBox, "Esta ciudad ya existe en la base de Datos.");
+                NombreTextBox.Focus();
+                paso = false;
+            }
+
+            return paso;
+        }
         public void Limpiar()
         {
             NombreTextBox.Clear();
             CiudadIdNumericUpDown.Value = 0;
+            ErrorProvider.Clear();
         }
 
         private Ciudad LlenaClase()
@@ -58,6 +78,9 @@ namespace Parcial1_apd1_20180906
             Ciudad ciudades;
             bool paso = false;
 
+            if (!Validar())
+                return;
+
             ciudades = LlenaClase();
 
             if (CiudadIdNumericUpDown.Value == 0)
@@ -89,10 +112,25 @@ namespace Parcial1_apd1_20180906
 
             Limpiar();
 
-            if (CiudadBLL.Eliminar(id))
-                MessageBox.Show("Ciudad eliminada con exito!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (CiudadBLL.Existe(id))
+            {
+                if (MessageBox.Show("Deseas Eliminar esta ciudad?", "Informacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (CiudadBLL.Eliminar(id))
+                        MessageBox.Show("Ciudad eliminada con exito!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("No se pudo eliminar dicha Ciudad...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                    return;
+            }
             else
-                MessageBox.Show("No se pudo eliminar dicha Ciudad...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                MessageBox.Show("Esta ciudad no existe, no puedes eliminarla!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            
+               
         }
 
         private void BuscarButton_Click(object sender, EventArgs e)
@@ -107,8 +145,12 @@ namespace Parcial1_apd1_20180906
 
             if(ciudades != null)
             {
-                MessageBox.Show("Ciudad encontrada!","Exito",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 LlenaCampo(ciudades);
+                MessageBox.Show("Ciudad encontrada!","Exito",MessageBoxButtons.OK,MessageBoxIcon.Information);                
+            }
+            else
+            {
+                MessageBox.Show("Ciudad no encontrada!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
