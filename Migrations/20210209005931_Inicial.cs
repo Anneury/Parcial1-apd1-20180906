@@ -2,7 +2,7 @@
 
 namespace Parcial1_apd1_20180906.Migrations
 {
-    public partial class Inicial_Migracion : Migration
+    public partial class Inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

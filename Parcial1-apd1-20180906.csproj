@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-	  <StartWorkingDirectory>$(MsBuildProjectDirectory)</StartWorkingDirectory>
+	  <StartWorkingDirectory>$(MSBuilProjectDirectory)</StartWorkingDirectory>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <RootNamespace>Parcial1_apd1_20180906</RootNamespace>
@@ -17,7 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Data\GestionCiudades.Db">
+    <Folder Include="Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="GestionCiudades.Db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
